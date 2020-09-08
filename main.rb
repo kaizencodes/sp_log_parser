@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby -w
+#!/usr/local/bin/ruby
 # frozen_string_literal: true
 
 require_relative 'app/controller'
