@@ -1,0 +1,14 @@
+*.gem
+/.config
+/spec/examples.txt
+/test/tmp/
+/log/
+/tmp/
+
+# Ignore Byebug command history file.
+.byebug_history
+
+## Environment normalization:
+/.bundle/
+/vendor/bundle
+/lib/bundler/man/

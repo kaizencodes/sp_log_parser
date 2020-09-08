@@ -1,0 +1,19 @@
+AllCops:
+  StyleGuideBaseURL: https://rubystyle.guide
+  # Include:
+    # - rubocop-rspec
+  Exclude: 
+    - vendor/**/*
+
+Style/StringLiterals:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Style/AccessModifierDeclarations:
+  AllowModifiersOnSymbols: true
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
