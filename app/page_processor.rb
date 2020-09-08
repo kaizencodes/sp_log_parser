@@ -14,8 +14,12 @@ class PageProcessor
 
   def process
     reader.read_line do |line|
-      ip = process_ip(line.ip)
-      process_page(line.path, ip)
+      new_ip = Ip.new(line.ip)
+      new_page = Page.new(line.path)
+      next if new_ip.invalid? || new_page.invalid?
+
+      process_ip(new_ip)
+      process_page(new_page, new_ip)
     end
 
     pages
@@ -23,24 +27,19 @@ class PageProcessor
 
   private
 
-  def process_ip(address)
-    new_ip = Ip.new(address)
+  def process_ip(new_ip)
     if (existing_ip = ips.find { |ip| ip == new_ip })
-      return existing_ip
+      existing_ip
     else
       ips << new_ip
     end
-
-    new_ip
   end
 
-  def process_page(path, ip)
-    new_page = Page.new(path)
-
+  def process_page(new_page, new_ip)
     if (existing_page = pages.find { |page| page == new_page })
-      existing_page.viewed_by(ip)
+      existing_page.viewed_by(new_ip)
     else
-      new_page.viewed_by(ip)
+      new_page.viewed_by(new_ip)
       pages << new_page
     end
   end

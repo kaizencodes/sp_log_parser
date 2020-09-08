@@ -4,6 +4,8 @@
 class Page
   attr_reader :path, :page_views
 
+  PATH_VALIDATOR = /\/\w*/
+
   def initialize(path, ips: [])
     @path = path
     @page_views = []
@@ -21,6 +23,14 @@ class Page
 
   def to_s
     path
+  end
+
+  def valid?
+    path =~ PATH_VALIDATOR
+  end
+
+  def invalid?
+    !valid?
   end
 
   PageView = Struct.new(:ip)
