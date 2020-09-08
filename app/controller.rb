@@ -27,8 +27,9 @@ class Controller
     most_visits = MostVisitsPresenter.new(pages: pages)
     unique_visits = MostUniqueVisitsPresenter.new(pages: pages)
 
-    printer = PrinterFactory.get_printer(output_path)
-    printer.print(most_visits)
-    printer.print(unique_visits)
+    PrinterFactory.get_printer(output_path).tap do |printer|
+      printer.print(most_visits)
+      printer.print(unique_visits)
+    end
   end
 end
