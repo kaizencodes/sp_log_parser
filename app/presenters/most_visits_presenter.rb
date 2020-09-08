@@ -15,12 +15,6 @@ class MostVisitsPresenter
     populate_visit_counts
   end
 
-  def populate_visit_counts
-    @visit_counts = pages.map do |page|
-      VisitCount.new(page: page, count: page.page_views.size)
-    end.sort.reverse
-  end
-
   def to_s
     return NO_VISITS if visit_counts.empty?
 
@@ -30,6 +24,12 @@ class MostVisitsPresenter
   end
 
   private
+
+  def populate_visit_counts
+    @visit_counts = pages.map do |page|
+      VisitCount.new(page: page, count: page.page_views.size)
+    end.sort.reverse
+  end
 
   def count_text(count)
     result = count.to_s + " visit"
