@@ -50,8 +50,10 @@ it will output the result into this path
 main.rb input.log output.log
 ```
 
-### Notes on Validation
+### Notes
 The example log file seemed to not contain any invalid entries and the requirements
 didn't mention so I assumed the log content is already validated. Both the lines and
 the ip addresses. If this assumption is incorrect validators can be easily added.
 
+One area of weakness is the output. The presenter generates a single string that is printed out. For the example this is sufficient, but for a larger production environment a more efficient solution is needed. Something similar to the reader,
+where the input is processed line by line.
