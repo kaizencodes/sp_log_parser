@@ -50,7 +50,18 @@ it will output the result into this path
 main.rb input.log output.log
 ```
 
+### Design
+
+![design](./doc/design.png)
+
+The main idea was to separate the conserns of reading, processing and storing the data, modifing the data, and outputing the results.
+
+so changes on the presenter doesn't affect the processor for example.
+
 ### Notes
+
+I named the output components printers as View has a special semantic given the task and wanted to avoid confusion.
+
 The example log file seemed to not contain any invalid entries and the requirements
 didn't mention. I've added some simple validations for both the page and ip.
 
